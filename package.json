@@ -1,0 +1,11 @@
+{
+  "name": "blog-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/dev-93/blog-backend.git",
+  "author": "Kim taenam <cjb940103@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.13.1"
+  }
+}
