@@ -6,6 +6,10 @@
   "author": "Kim taenam <cjb940103@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "eslint-config-prettier": "^8.3.0",
     "koa": "^2.13.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.31.0"
   }
 }
