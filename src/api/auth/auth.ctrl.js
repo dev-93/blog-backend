@@ -38,8 +38,32 @@ export const register = async ctx => {
     }
 };
 
+
+// POST /api/auth/login
 export const login = async ctx => {
-    // 로그인
+    const { username, password } = ctx.request.body;
+    
+    if(!username || !password) { // username이나 password 둘 중 하나 없으면 에러
+        ctx.status = 401;
+        return;
+    }
+
+    try {
+        const user = await User.findByUsername(username);
+        if(!user) { // 계정 존재 하지 않으면 에러
+            ctx.status = 401;
+            return;
+        }
+
+        const valid = await user.checkPassword(password);
+        if (!valid) { // 잘못된 비밀번호시 에러
+            ctx.status = 401;
+            return;
+        }
+        ctx.body = user.serialize();
+    } catch(e) {
+        ctx.throw(500, e);
+    }
 };
 
 export const check = async ctx => {
