@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 
 import api from "./api";
 import jwtMiddleware from "./lib/jwtMiddleware";
+import createFakeData from "./createFakeData";
 
 const { PORT, MONGO_URI } = process.env;
 
@@ -13,6 +14,7 @@ mongoose
 .connect(MONGO_URI, {useNewUrlParser: true, useFindAndModify: false})
     .then(() => {
         console.log("Conneted to Mongo DB");
+        createFakeData();
     })
     .catch(e => {
         console.error(e);
