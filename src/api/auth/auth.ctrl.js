@@ -80,7 +80,6 @@ export const login = async ctx => {
 
 export const check = async ctx => {
     const { user } = ctx.state;
-    console.log(user);
     if(!user){ // 로그인 중이 아님
         ctx.status = 401;
         return;
