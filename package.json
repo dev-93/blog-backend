@@ -1,0 +1,28 @@
+{
+  "name": "blog-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/dev-93/blog-backend.git",
+  "author": "Kim taenam <cjb940103@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "esm": "^3.2.25",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.0.0",
+    "mongoose": "^5.13.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.31.0",
+    "nodemon": "^2.0.12"
+  },
+  "scripts": {
+    "start": "node -r esm src",
+    "start:dev": "nodemon --watch src/ -r esm src/index.js"
+  }
+}
