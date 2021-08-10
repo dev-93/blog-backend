@@ -3,7 +3,7 @@ import Koa from "Koa";
 import Router from "koa-router";
 import bodyParser from "koa-bodyparser"; 
 import mongoose from "mongoose"; 
-
+import cors from "@koa/cors";
 import api from "./api";
 import jwtMiddleware from "./lib/jwtMiddleware";
 
@@ -20,6 +20,8 @@ mongoose
 
 const app = new Koa();
 const router = new Router();
+
+app.use(cors());
 
 //라우터 설정
 router.use('/api', api.routes());
