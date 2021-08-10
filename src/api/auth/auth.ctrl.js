@@ -47,8 +47,6 @@ export const register = async ctx => {
 
 // POST /api/auth/login
 export const login = async ctx => {
-    console.log(ctx.request.body);
-    
     const { username, password } = ctx.request.body;
     
     if(!username || !password) { // username이나 password 둘 중 하나 없으면 에러
