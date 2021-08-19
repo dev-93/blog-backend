@@ -66,9 +66,16 @@ export const login = async ctx => {
             ctx.status = 401;
             return;
         }
+
         ctx.body = user.serialize();
 
         const token = user.generateToken();
+
+        ctx.body = {
+            user: user.serialize(),
+            token
+        };
+
         ctx.cookies.set('access_token', token, {
             maxAge: 1000 * 60 * 60 * 24 * 7,
             httpOnly: true,
