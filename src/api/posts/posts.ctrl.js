@@ -109,6 +109,7 @@ export const list = async ctx => {
             .skip((page -1) * 10)
             .exec();
         const postCount = await Post.countDocuments(query).exec();
+        ctx.set('Page-Count', postCount);
         ctx.set('Last-Page', Math.ceil(postCount / 10));
         ctx.body = posts
             .map(post => post.toJSON())
@@ -116,7 +117,7 @@ export const list = async ctx => {
                 ...post,
                 body: removeHtmlAndShorten(post.body),
 
-            }))
+            }));
         ctx.body = posts;
     }  catch(e) {
         ctx.throw(500, e);
