@@ -33,6 +33,8 @@ export const write = async ctx => {
     });
 
     const result = schema.validate(ctx.request.body);
+
+    console.log(result);
     if(result.error) {
         ctx.status = 400;
         ctx.body = result.error;
