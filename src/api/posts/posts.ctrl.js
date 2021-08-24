@@ -96,10 +96,11 @@ export const list = async ctx => {
         return;
     }
 
-    const { tag, username} = ctx.query;
+    const { tag, username, title} = ctx.query;
     const query = {
         ...(username ? {'user.username' : username} : {}),
         ...(tag ? { tags : tag} : {}),
+        ...(title ? {title : title} : {})
     };
 
     try {
@@ -109,6 +110,7 @@ export const list = async ctx => {
             .skip((page -1) * 10)
             .exec();
         const postCount = await Post.countDocuments(query).exec();
+        
         ctx.set('Page-Count', postCount);
         ctx.set('Last-Page', Math.ceil(postCount / 10));
         ctx.body = posts
@@ -141,6 +143,7 @@ export const read = async ctx => {
 
 export const remove = async ctx => {
     const { id } = ctx.params;
+    
     try {
         await Post.findByIdAndRemove(id).exec();
         ctx.status = 204;
