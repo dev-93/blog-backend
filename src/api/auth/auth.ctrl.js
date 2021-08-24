@@ -73,7 +73,6 @@ export const login = async ctx => {
 
         ctx.body = {
             user: user.serialize(),
-            token
         };
 
         ctx.cookies.set('access_token', token, {
