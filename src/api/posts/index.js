@@ -5,14 +5,17 @@ import checkLoggedIn  from "../../lib/checkLoggedIn";
 const posts = new Router();
 
 posts.get('/', postsCtrl.list);
-// posts.post('/', checkLoggedIn, postsCtrl.write);
-posts.post('/', postsCtrl.write);
+posts.post('/', checkLoggedIn, postsCtrl.write);
+// posts.post('/', postsCtrl.write);
 
 const post = new Router();
 
 post.get('/', postsCtrl.read);
-post.delete('/', checkLoggedIn, postsCtrl.checkOwnPost , postsCtrl.remove);
-post.patch('/', checkLoggedIn, postsCtrl.checkOwnPost, postsCtrl.update);
+// post.delete('/', checkLoggedIn, postsCtrl.checkOwnPost , postsCtrl.remove);
+// post.patch('/', checkLoggedIn, postsCtrl.checkOwnPost, postsCtrl.update);
+
+post.delete('/', postsCtrl.remove);
+post.patch('/', postsCtrl.update);
 
 posts.use('/:id', postsCtrl.getPostById, post.routes());
 
