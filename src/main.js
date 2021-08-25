@@ -1,5 +1,5 @@
 require('dotenv').config();
-// import Koa from "Koa"; 
+import Koa from "Koa"; 
 import Router from "koa-router";
 import bodyParser from "koa-bodyparser"; 
 import mongoose from "mongoose"; 
@@ -20,10 +20,6 @@ mongoose
 
 const app = new Koa();
 const router = new Router();
-
-// app.use(cors());
-const Koa = require('koa');
-const app = new Koa();
 
 //라우터 설정
 router.use('/api', api.routes());
