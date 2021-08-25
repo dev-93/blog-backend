@@ -21,6 +21,8 @@ mongoose
 const app = new Koa();
 const router = new Router();
 
+app.use(cors());
+
 //라우터 설정
 router.use('/api', api.routes());
 
