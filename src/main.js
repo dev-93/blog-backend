@@ -33,8 +33,4 @@ app.use(jwtMiddleware);
 // app 인스턴스에 라우터 적용
 app.use(router.routes()).use(router.allowedMethods());
 
-const port = PORT || 4000;
-
-app.listen(port, () => {
-    console.log(`Listening to port %d`, port);
-});
+module.exports = app; 
