@@ -23,18 +23,14 @@ const router = new Router();
 
 app.use(cors());
 
-app.get('/', async (req, res) => {
-    res.send('Hello World')
-});
+//라우터 설정
+router.use('/api', api.routes());
 
-// //라우터 설정
-// router.use('/api', api.routes());
+// 라우터 적용 전에 bodyParser 적용
+app.use(bodyParser());
+app.use(jwtMiddleware);
 
-// // 라우터 적용 전에 bodyParser 적용
-// app.use(bodyParser());
-// app.use(jwtMiddleware);
+// app 인스턴스에 라우터 적용
+app.use(router.routes()).use(router.allowedMethods());
 
-// // app 인스턴스에 라우터 적용
-// app.use(router.routes()).use(router.allowedMethods());
-
-module.exports = app; 
+export default app;
