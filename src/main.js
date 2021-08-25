@@ -1,5 +1,5 @@
 require('dotenv').config();
-import Koa from "Koa"; 
+// import Koa from "Koa"; 
 import Router from "koa-router";
 import bodyParser from "koa-bodyparser"; 
 import mongoose from "mongoose"; 
@@ -7,21 +7,23 @@ import cors from "@koa/cors";
 import api from "./api";
 import jwtMiddleware from "./lib/jwtMiddleware";
 
-const { PORT, MONGO_URI } = process.env;
+// const { PORT, MONGO_URI } = process.env;
 
-mongoose
-.connect(MONGO_URI, {useNewUrlParser: true, useFindAndModify: false})
-    .then(() => {
-        console.log("Conneted to Mongo DB");
-    })
-    .catch(e => {
-        console.error(e);
-    });
+// mongoose
+// .connect(MONGO_URI, {useNewUrlParser: true, useFindAndModify: false})
+//     .then(() => {
+//         console.log("Conneted to Mongo DB");
+//     })
+//     .catch(e => {
+//         console.error(e);
+//     });
 
+// const app = new Koa();
+// const router = new Router();
+
+// app.use(cors());
+const Koa = require('koa');
 const app = new Koa();
-const router = new Router();
-
-app.use(cors());
 
 //라우터 설정
 router.use('/api', api.routes());

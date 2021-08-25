@@ -24,7 +24,7 @@
     "nodemon": "^2.0.12"
   },
   "scripts": {
-    "start": "node -r esm index.js",
-    "start:dev": "nodemon --watch src/ -r esm index.js"
+    "start": "node -r esm ./index.js",
+    "start:dev": "nodemon --watch src/ -r esm ./index.js"
   }
 }
