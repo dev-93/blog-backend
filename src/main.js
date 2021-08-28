@@ -1,5 +1,5 @@
 require('dotenv').config();
-import Koa from "Koa"; 
+import Koa from "koa"; 
 import Router from "koa-router";
 import bodyParser from "koa-bodyparser"; 
 import mongoose from "mongoose"; 
@@ -10,7 +10,7 @@ import jwtMiddleware from "./lib/jwtMiddleware";
 const { PORT, MONGO_URI } = process.env;
 
 mongoose
-.connect(MONGO_URI, {useNewUrlParser: true, useFindAndModify: false})
+.connect(MONGO_URI, {useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true})
     .then(() => {
         console.log("Conneted to Mongo DB");
     })
@@ -38,3 +38,5 @@ const port = PORT || 4000;
 app.listen(port, () => {
     console.log(`Listening to port %d`, port);
 });
+
+module.exports = app; 
